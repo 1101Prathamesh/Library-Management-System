@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+  <title>View Books</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style media="screen">
+
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+ 
+  height:25%;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  position: absolute;
+  left:  10%;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+
+  width: 25%;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+</style>
+
+</head>
+  <body>
+    {% include "library/navbarstudent.html" %}
+    <br>
+    <br>
+    <h3 class="p-3 mb-2 bg-primary text-white" style = 'font-size: 50px;text-align:center;'>Available Book in Library !</h3>
+{% if books%}
+
+<div class="row">
+  
+  {% for book in books %}
+  <div class="column">
+    <!-- <img src="{{ book.Image.url }} "  style="width: 30%; height: 70%; " alt="Preview Unavailable" > -->
+    
+    <a href="getbooks"><img src="{{ book.Image.url }} " alt="Preview Unavailable"style="width: 30%; height: 70%; " ></a>
+
+    <p>  Book:{{book.name}} <br>
+         Author:{{book.author}} <br>
+         ISBN:{{book.isbn}} <br>
+        <button type="button"  class="btn btn-primary btn-lg" onclick="window.location.href = '/cart';">Add To Cart</button><br><br><br>
+    </p><br><br><br>
+  </div><br><br>
+  {% endfor %}
+</div>
+
+ 
+
+ 
+{%else%}
+<h1>Have 0 book</h1>
+{%endif%}
+
+
+   
+  </body>
+</html>
