@@ -13,6 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+#from xmlrpc.client import Server
+from urllib.parse import urlparse
+from django.urls import resolve
+from django.http import Http404, HttpResponseRedirect
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
@@ -21,7 +26,8 @@ from django.contrib.auth.views import LoginView,LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-
+from django.views.static import serve
+from django.conf.urls  import  url
 admin.site.site_header = "Library Management System Admin"
 admin.site.site_title = "Library Management System Admin Portal"
 admin.site.index_title = "Welcome to Library Management System"
@@ -46,6 +52,9 @@ admin.site.index_title = "Welcome to Library Management System"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+   # path('', views.index, name='index'),
     path('accounts/',include('django.contrib.auth.urls') ),
     path('', views.home_view),
 
