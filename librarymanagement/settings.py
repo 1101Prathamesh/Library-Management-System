@@ -22,8 +22,8 @@ SECRET_KEY = 'k(6-_4sgig$sbrccr2*0=7s)bklpiywi#_121l)s(f8)dq^^wv'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = ['http://127.0.0.1:8000/','libbrarymanagemenntsystem.herokuapp.com/']
 
 
 INSTALLED_APPS = [
